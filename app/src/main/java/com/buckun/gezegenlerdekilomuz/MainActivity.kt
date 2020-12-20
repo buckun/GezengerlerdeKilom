@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
     private val PLUTO = 0.06
     private val POUND_TO_WEIGHT = 0.45359237
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -91,10 +89,22 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
 
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if(!TextUtils.isEmpty(girilecekKiloMiktarı.text.toString())) {
+            outState.putString("FINDWEIGHT", hesaplanaKilo.text.toString())
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        hesaplanaKilo.text = savedInstanceState?.getString("FINDWEIGHT")
+    }
+
 
     fun hesaplaAgirlik(pound: Double, gezgeneGorePoundDegeri:Double) {
         var sonuctoKilo =poundToWeight(pound * gezgeneGorePoundDegeri)
-        hesaplanaKilo.text = sonuctoKilo.formatla(2).toString()
+        hesaplanaKilo.text = sonuctoKilo.formatla(2).toString() + " kg"
 
     }
 }
