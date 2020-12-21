@@ -2,10 +2,12 @@ package com.buckun.gezegenlerdekilomuz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
+import androidx.annotation.Nullable
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() ,View.OnClickListener{
